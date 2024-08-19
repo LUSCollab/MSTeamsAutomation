@@ -1,0 +1,33 @@
+## User Provisioning
+- ### Requirements:
+	- You must have the Teams Administrator role at minimum to use this script
+	- The following modules are used. If they are not installed, the script will prompt for their installation:
+		- Microsoft.Graph.Users
+		- Microsoft.Graph.Authentication
+		- MicrosoftTeams
+- ### Usage:
+	- The user provisioning script will read in a .csv file that contains the following information:
+		- UserPrincipalName
+			- UPN of the user
+			- **Required**
+		- Phone Number
+			- e164 formatted (ex. +12125551234)
+		- Extension
+			- Only used when assigning extensions
+			- If the user will only have an extension, the phone number will be a shared main number.
+		- Type
+			- OperatorConnect or DirectRouting
+		- Location
+			- Name corresponds to previously created Emergency Locations
+		- Voice Routing Policy
+			- Name of voice routing policy to be assigned
+		- Emergency Calling Policy
+			- Name of emergency calling policy to be assigned
+		- Dial Plan
+			- Name of dial plan to be assigned
+		Please reference the SampleData.csv template as an example
+	- The user will be verified that they exist within Entra Active Directory
+		- If they exist, they will be provisioned according to the input file
+		- If they do not exist, an error will be logged and the next user will be checked. 
+	- A log file will be created in the following directory and log all successful and failed provisioning attempts
+		- C:\\users\\\<<username\>>\\Documents\\Logs\\

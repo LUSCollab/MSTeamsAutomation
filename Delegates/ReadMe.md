@@ -1,0 +1,22 @@
+## Delegate Assignment
+- ### Requirements:
+	- You must have the Teams Administrator role at minimum to use this script
+	- The following modules are used. If they are not installed, the script will prompt for their installation:
+		- Microsoft.Graph.Users
+		- Microsoft.Graph.Authentication
+		- MicrosoftTeams
+- ### Usage:
+	- This script will assign new delegates to a user and set the user's call settings to also ring delegates. 
+	- Please reference the DelegateAssignment.csv as an example input file
+	- The delegate assignment script reads in the following information from the selected csv file:
+		- User Principle Name
+			- UPN of the user
+			- **Required**
+		- Delegates
+			- This field allows for multiple delegates to be assigned to one user by seperating the delegates with a comma and enclosing everyting within quotes
+				- Example: "user01@domain.com,user02@domain.com,user03@domain.com"
+	- The user will be verified that they exist within Entra Active Directory
+		- If they exist, they will be provisioned according to the input file
+		- If they do not exist, an error will be logged and the next user will be checked. 
+	- A log file will be created in the following directory and log all successful and failed provisioning attempts
+		- C:\\users\\\<<username\>>\\Documents\\Logs\\
