@@ -1,7 +1,7 @@
 ############## STATIC DATA ENTRY ###################
 
 ## Create the log output folder###
-$outputfolder = "C:\Users\" + $env:username + "\Documents\Logs\"
+$outputfolder = ".\Logs\"
 
 #If the folder does not exist, create it.
 if (-not (Test-Path -Path $outputfolder))
@@ -76,8 +76,8 @@ else
 
 # Import the CSV file containing user information, DIDs, and extensions
 $importfile = Get-FileName
-$outputcsvfile = "C:\Users\" + $env:username + "\Documents\Logs\Dialplan_Enablement_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
-$outputerrorfile = "C:\Users\" + $env:username + "\Documents\Logs\Dialplan_Enablement_Errors_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
+$outputcsvfile = ".\Logs\Dialplan_Enablement_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
+$outputerrorfile = ".\Logs\Dialplan_Enablement_Errors_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
 $subject = "The Dial Plan Enablement Script"
 
 
@@ -110,9 +110,9 @@ foreach ($dialplan in $dialplans) {
 	$NRTranslation04 = $dialplan.NRTranslation04
 	$NRDescription04 = $dialplan.NRDescription04
 
-	# $NRPattern05 = $dialplan.NRPattern05
-	# $NRTranslation05 = $dialplan.NRTranslation05
-	# $NRDescription05 = $dialplan.NRDescription05
+	$NRPattern05 = $dialplan.NRPattern05
+	$NRTranslation05 = $dialplan.NRTranslation05
+	$NRDescription05 = $dialplan.NRDescription05
 
     # Check if the dial plan exists
 
@@ -146,6 +146,9 @@ foreach ($dialplan in $dialplans) {
 			}
 			if ($NRName04) {
 				$NR += New-CsVoiceNormalizationRule -Name $NRName04 -Parent $DPName -Pattern $NRPattern04 -Translation $NRTranslation04 -InMemory -Description $NRDescription04
+			}
+			if ($NRName05) {
+				$NR += New-CsVoiceNormalizationRule -Name $NRName05 -Parent $DPName -Pattern $NRPattern05 -Translation $NRTranslation05 -InMemory -Description $NRDescription05
 			}
 			Set-CsTenantDialPlan -Identity $DPName -NormalizationRules @{add=$NR}
             

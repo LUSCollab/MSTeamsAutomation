@@ -1,0 +1,3 @@
+UserPrincipalName,Delegates
+user01@domain.com,admin01@domain.com
+user02@domain.com,"admin01@domain.com,admin02@domain.com"

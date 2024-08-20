@@ -1,5 +1,5 @@
 ## Create the log output folder###
-$outputfolder = "C:\Users\" + $env:username + "\Documents\Logs\"
+$outputfolder = ".\Logs\"
 
 #If the folder does not exist, create it.
 if (-not (Test-Path -Path $outputfolder))
@@ -127,8 +127,8 @@ else
 
 # Import the CSV file
 $importfile = Get-FileName
-$outputcsvfile = "C:\Users\" + $env:username + "\Documents\Logs\Delegates_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
-$outputerrorfile = "C:\Users\" + $env:username + "\Documents\Logs\Delegates_Errors_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
+$outputcsvfile = ".\Logs\Delegates_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
+$outputerrorfile = ".\Logs\Delegates_Errors_" + $(get-date -f MM-dd-yy-hh-mm-ss) + ".csv" # so that you get a new file each time you run the script
 
 $users = Import-Csv $importfile
 

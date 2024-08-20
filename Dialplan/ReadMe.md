@@ -1,0 +1,23 @@
+## MS Teams Voice Dial Plan Provisioning
+- ### Requirements:
+	- You must have the Teams Administrator role at minimum to use this script
+	- The following modules are used. If they are not installed, the script will prompt for their installation:
+		- MicrosoftTeams
+
+- ### Usage:
+	- This script will create new MS Teams Dialplans and assign the specified normalization rules
+    - This script is only for provisioning new Dialplans, not for updating existing.
+    - The script can add up to 5 normalization rules to each dialplan. If more are required, the script will need to be modified.
+	- Please reference the SampleData.csv as an example input file
+	- The delegate assignment script reads in the following information from the selected csv file:
+		- Name
+		- Description
+        - Normalization Rule Pattern
+        - Normalization Rule Translation
+        - Normalization Rule Description
+	- The dialplan will be verified that it does not currently exist
+		- If it does not exist, they will be provisioned according to the input file
+        - If it does exist, an error will be logged in the error file and the next dialplan will be evaluated.
+	- A log file will be created and log all successful and failed provisioning attempts
+		- The "Logs" directory will be created within the same directory you are running the script from.
+		- If you do not run the script with Admin privleges, you will need to create the 'Logs' folder before running the script.

@@ -1,0 +1,2 @@
+UserPrincipalName,PhoneNumber,Extension,Type,Location,CallHoldPolicy,CallParkPolicy,CallerIdPolicy,CallingPolicy,DialPlan,EmergencyCallRoutingPolicy,VoiceRoutePolicy
+testuser@domain.com,+12125551234,,DirectRouting,New York,,,,,NY-Dialplan,NY-EmerCalling,NY-PSTNRoute

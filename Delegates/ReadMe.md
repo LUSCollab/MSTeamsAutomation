@@ -5,9 +5,10 @@
 		- Microsoft.Graph.Users
 		- Microsoft.Graph.Authentication
 		- MicrosoftTeams
+
 - ### Usage:
 	- This script will assign new delegates to a user and set the user's call settings to also ring delegates. 
-	- Please reference the DelegateAssignment.csv as an example input file
+	- Please reference the SampleData.csv as an example input file
 	- The delegate assignment script reads in the following information from the selected csv file:
 		- User Principle Name
 			- UPN of the user
@@ -18,5 +19,6 @@
 	- The user will be verified that they exist within Entra Active Directory
 		- If they exist, they will be provisioned according to the input file
 		- If they do not exist, an error will be logged and the next user will be checked. 
-	- A log file will be created in the following directory and log all successful and failed provisioning attempts
-		- C:\\users\\\<<username\>>\\Documents\\Logs\\
+	- A log file will be created and log all successful and failed provisioning attempts
+		- The "Logs" directory will be created within the same directory you are running the script from.
+		- If you do not run the script with Admin privleges, you will need to create the 'Logs' folder before running the script.
