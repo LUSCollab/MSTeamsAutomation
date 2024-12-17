@@ -150,7 +150,7 @@ foreach ($user in $users) {
 	$dialPlan = $user.DialPlan
 
     # Check if the user exists in Azure Active Directory
-    # $existingUser = Get-MgUser -UserId $upn -ErrorAction SilentlyContinue
+    $existingUser = Get-MgUser -UserId $upn -ErrorAction SilentlyContinue
 
     if ($existingUser) {
         # Set Phone number (DID)
